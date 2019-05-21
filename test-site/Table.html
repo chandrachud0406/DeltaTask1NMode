@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Your Health companion</title>
+    <link href="styles/minimal-table.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet">
+  </head>  
+  
+  <body>
+    <p id = 'welcome'> Welcome </p>
+    <label for="foodname">Foodname: </label>
+    <input type="text" id="foodname">
+    <br>
+    <label for="cal">Calories: </label>
+    <input type="number" id="cal">
+    <br>
+    <label for="car">Carbs: </label>
+    <input type="number" id="car">
+    <br>
+    <label for="fat">Fat: </label>
+    <input type="number" id="fat">
+    <br>
+    <label for="pro">Proteins: </label>
+    <input type="number" id="pro">
+    <br>
+    <label for="sug">Sugars: </label>
+    <input type="number" id="sug">
+    <br>
+    <br>   
+    <button id = "add">Add food item</button>
+    <br>
+    <br>
+    <label for="cal">Calories: </label>
+    <input type="number" id="dcal">
+    <br>
+    <label for="car">Carbs: </label>
+    <input type="number" id="dcar">
+    <br>
+    <label for="fat">Fat: </label>
+    <input type="number" id="dfat">
+    <br>
+    <label for="pro">Proteins: </label>
+    <input type="number" id="dpro">
+    <br>
+    <label for="sug">Sugars: </label>
+    <input type="number" id="dsug">
+    <br>
+    <br>   
+    <button id = "dlim">Daily Limit:</button>
+    <table>
+      <tr>
+        <th>Food item</th>
+        <th>Calories</th>
+        <th>Carbs</th>
+        <th>Fat</th>
+        <th>Proteins</th>
+        <th>Sugars</th>
+      </tr>
+      <tr id ='total'>
+        <th>Total</th>
+        <th>0</th>
+        <th>0</th>
+        <th>0</th>
+        <th>0</th>
+        <th>0</th>
+      </tr>
+      <tr id='limit'>
+        <th>Daily limit</th>
+        <th>0</th>
+        <th>0</th>
+        <th>0</th>
+        <th>0</th>
+        <th>0</th>
+      </tr>
+      <tr id='rem'>
+        <th>Remaining</th>
+        <th>0</th>
+        <th>0</th>
+        <th>0</th>
+        <th>0</th>
+        <th>0</th>
+      </tr>
+    </table>
+    
+    <script src="scripts/main.js"></script>
+  </body>
+</html>
+
