@@ -2,25 +2,47 @@ var addBtn = document.getElementById('add');
 var tab = document.querySelector('table');
 var limBtn = document.getElementById('dlim');
 
-function getRemaining() {
-    var rem = document.getElementById('rem');
-    var tot = document.getElementById('total');
-    var dlim = document.getElementById('limit');
+/*Recalculates the total, remaining values for Calories, fats etc after every deletion, edition, addition or limit change */
 
-    rem.children[1].textContent = parseInt(dlim.children[1].textContent) - parseInt(tot.children[1].textContent);
-    rem.children[2].textContent = parseInt(dlim.children[2].textContent) - parseInt(tot.children[2].textContent);
-    rem.children[3].textContent = parseInt(dlim.children[3].textContent) - parseInt(tot.children[3].textContent);
-    rem.children[4].textContent = parseInt(dlim.children[4].textContent) - parseInt(tot.children[4].textContent);
-    rem.children[5].textContent = parseInt(dlim.children[5].textContent) - parseInt(tot.children[5].textContent);
+var clock = document.getElementById('clock');
 
-    if(rem.children[1].textContent < 0)
-    alert('You are exceeding your calorie limit');
+function displayTime() {
+    var date = new Date()
+    
+    var dateFinal = date.getDate() + "/"  + date.getMonth() + "/" + date.getFullYear() ; 
+    dateFinal = dateFinal + " - " +  date.getHours( )+ ":" +  date.getMinutes() + ":" +  date.getSeconds();
+    clock.textContent = dateFinal;
 
 }
 
+setTimeout(displayTime, 1000);
+function getTotal() {
+    var rows = document.querySelectorAll('tr');
+
+    for(let j = 1; j <= 5; j++)
+    {
+        rows[rows.length - 3].children[j].textContent = '0';
+        for(let i = 1; i < rows.length - 3; i++)
+        {
+            rows[rows.length - 3].children[j].textContent =  parseInt(rows[rows.length - 3].children[j].textContent) + parseInt(rows[i].children[j].textContent);
+        }
+        rows[rows.length - 1].children[j].textContent = parseInt(rows[rows.length - 2].children[j].textContent) - parseInt(rows[rows.length - 3].children[j].textContent); 
+    }
+
+    if(rows[rows.length - 1].children[1].textContent < 0)
+    alert('You are exceeding your calorie limit');
+}
+
+/* To add elements to the food table */
+
 addBtn.onclick = function() {    
     var row = document.createElement('tr');
-    var tot = document.getElementById('total');
+
+    var delBtn = document.createElement('button');
+    delBtn.textContent = 'Delete';
+
+    var editBtn = document.createElement('button');
+    editBtn.textContent = 'Edit';
 
     var col = document.createElement('td');
     var foodName = document.getElementById('foodname');
@@ -30,41 +52,83 @@ addBtn.onclick = function() {
     var col = document.createElement('td');
     var calories = document.getElementById('cal');
     col.textContent = calories.value;
-    tot.children[1].textContent = parseInt(tot.children[1].textContent) + Number(calories.value);
     row.appendChild(col);
 
     var col = document.createElement('td');
     var carbs = document.getElementById('car');
     col.textContent = carbs.value;
-    tot.children[2].textContent = parseInt(tot.children[2].textContent) + Number(carbs.value);
     row.appendChild(col);
 
     var col = document.createElement('td');
     var fat = document.getElementById('fat');
     col.textContent = fat.value;
-    tot.children[3].textContent = parseInt(tot.children[3].textContent) +  Number(fat.value);
     row.appendChild(col);
 
     var col = document.createElement('td');
     var protein = document.getElementById('pro');
     col.textContent = protein.value;
-    tot.children[4].textContent = parseInt(tot.children[4].textContent) +  Number(protein.value);
     row.appendChild(col);
 
     var col = document.createElement('td');
     var sugar = document.getElementById('sug');
     col.textContent = sugar.value;
-    tot.children[5].textContent = parseInt(tot.children[5].textContent) + Number(sugar.value);
     row.appendChild(col);
 
-    getRemaining();
+    row.appendChild(delBtn);
 
+    /* For the delete button */
+
+    delBtn.onclick = function (e) {
+        var x = row.parentElement;
+        x.removeChild(row);
+        getTotal();
+    }
+/* For the edit button  hides and unhides the dialog box*/
+    
+    editBtn.onclick = function(e) {
+        var item = document.getElementById('about');
+
+        if(item) {
+            if(item.className == 'hidden') {
+                item.className = 'unhidden';
+            }
+            else {
+                item.className = 'hidden';
+            }
+        }
+
+        var newFoodName = document.getElementById('efood');
+        row.children[0].textContent = newFoodName .value;
+
+        var newCalories = document.getElementById('ecal');
+        row.children[1].textContent = newCalories.value;
+    
+        var newCarbs = document.getElementById('ecar');
+        row.children[2].textContent = newCarbs.value;
+    
+        var newFat = document.getElementById('efat');
+        row.children[3].textContent = newFat.value;
+    
+        var newProtein = document.getElementById('epro');
+        row.children[4].textContent = newProtein.value;
+    
+        var newSugar = document.getElementById('esug');
+        row.children[5].textContent = newSugar.value;
+
+        getTotal();
+        
+    }   
+    row.appendChild(editBtn);
 
     var body = tab.lastElementChild;
     var arr = tab.firstElementChild;
 
     body.insertBefore(row, arr.lastElementChild.previousElementSibling.previousElementSibling);
+
+    getTotal();
 }
+
+/* To add the limit values for calories, carbs, etc comes with precalculated prefilled values */
 
 limBtn.onclick = function(){
     var dlim = document.getElementById('limit');
@@ -84,27 +148,40 @@ limBtn.onclick = function(){
     var dsugar = document.getElementById('dsug');
     dlim.children[5].textContent = Number(dsugar.value);
 
-    getRemaining();
+    getTotal();
 }
 
- var Url = window.location.href;
+/*Extract the values of Age, Height, Weight from URL */
 
- var Url = Url.split('?');
- var det = Url[1].split('&');
- var fin = [];
- for(let i = 0; i < det.length; i++)
- {
-     fin[i] = det[i].split('=')[1]
- }
+var Url = window.location.href;
 
- var welText = document.getElementById('welcome');
- welText.textContent += fin[0];
+var Url = Url.split('?');
+var det = Url[1].split('&');
+var fin = [];
+for(let i = 0; i < det.length; i++)
+{
+    fin[i] = det[i].split('=')[1]
+}
 
- /* Formula for Calorie count from age, height, weight CAL = (HGT/WGT) * AGE * 50 */
+/* Formula for Calorie count from age, height, weight CAL = (HGT/WGT) * AGE * 50 */
 
-    var CAL  = Number(Math.floor( (fin[2] / fin[3]) * fin[1] * 50) );
-    var cal = document.getElementById('dcal');
-    cal.value = CAL;
+var CAL  = Number(Math.floor( (fin[2] / fin[3]) * fin[1] * 50) );
+
+var dcal = document.getElementById('dcal');
+dcal.value = CAL;
+
+var dcar = document.getElementById('dcar');
+dcar.value = fin[2]*10;
+
+var dfat = document.getElementById('dfat');
+dfat.value = fin[3]*10;
+
+var dpro = document.getElementById('dpro');
+dpro.value = fin[1]*20;
+
+var dsug = document.getElementById('dsug');
+dsug.value = fin[1]*30;
+
 
     
 
@@ -136,66 +213,3 @@ limBtn.onclick = function(){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-z
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*var myImage = document.querySelector('img');
-
-myImage.onclick = function() {
-    var mySrc = myImage.getAttribute('src');
-    if(mySrc === 'images/index.jpeg') {
-        myImage.setAttribute ('src', 'images/download.jpeg');
-    } else {
-        myImage.setAttribute ('src', 'images/index.jpeg');
-    }
-
-}
-var myButton = document.querySelector('button');
-var myHeading = document.querySelector('h1');
-
-function setUserName() {
-    var myName = prompt('Please enter your name');
-    localStorage.setItem('name', myName);
-    myHeading.textContent = myName + 's totem';
-}
-
-if(!localStorage.getItem('name')) {
-    setUserName();
-} else {
-    var storedName = localStorage.getItem('name');
-    myHeading.textContent = storedName + 's totem';
-}
-
-myButton.onclick = function() {
-    setUserName();
-}
-*/

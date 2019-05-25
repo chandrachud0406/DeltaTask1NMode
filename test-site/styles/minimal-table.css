@@ -14,25 +14,32 @@ table {
 td, th {
   border: 1px solid rgb(190,190,190);
   padding: 10px 20px;
-}
-
-th {
-  background-color: rgb(190,190,190);
-}
-/*
-.limit {
-
-}
-.rem{
-
-}
-.total{
-
-}
-*/
-td {
   text-align: center;
 }
+
+td {
+  background-color: #6EB420;
+  text-decoration-color: black;
+}
+th {
+  background-color: green;
+  text-decoration-color: wheat;
+}
+
+.hidden{
+  display:none;
+}
+
+.unhidden{
+  display:block;
+}
+
+#clock{
+  position: fixed;
+  top: 0;
+  left: 1400px;
+}
+
 .total , .limit, .rem{
   border: black;
 }
@@ -41,18 +48,56 @@ caption {
 }
 p {
   text-align: center;
+  top: 2000px;
 }
 
-form {
+#entry{
     /* Just to center the form on the page */
-    margin: 0 auto;
+    margin: 300px 750px;
     width: 400px;
     /* To see the outline of the form */
     padding: 1em;
     border: 1px solid #CCC;
     border-radius: 1em;
+    background-color:  #6EB420;
   }
-  
+
+#foodentry{
+    /* Just to center the form on the page */
+    margin: 0 250px;
+    width: 400px;
+    /* To see the outline of the form */
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    background-color: #6EB420;
+  }
+
+#Dailylimit {
+  position: fixed;
+  top: 0;
+  left: 700px;
+  width: 400px;
+  /* To see the outline of the form */
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+  background-color:rgb(220, 235, 17);
+
+}
+
+#about {
+  position: absolute;
+  top: 500px;
+  left: 700px;
+  width: 400px;
+  /* To see the outline of the form */
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+  background-color: rgb(253, 155, 28);
+}
+
 div {
   margin-top: 1em;
 }

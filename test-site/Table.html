@@ -8,46 +8,92 @@
   </head>  
   
   <body>
-    <p id = 'welcome'> Welcome </p>
-    <label for="foodname">Foodname: </label>
-    <input type="text" id="foodname">
-    <br>
-    <label for="cal">Calories: </label>
-    <input type="number" id="cal">
-    <br>
-    <label for="car">Carbs: </label>
-    <input type="number" id="car">
-    <br>
-    <label for="fat">Fat: </label>
-    <input type="number" id="fat">
-    <br>
-    <label for="pro">Proteins: </label>
-    <input type="number" id="pro">
-    <br>
-    <label for="sug">Sugars: </label>
-    <input type="number" id="sug">
-    <br>
-    <br>   
-    <button id = "add">Add food item</button>
-    <br>
-    <br>
-    <label for="cal">Calories: </label>
-    <input type="number" id="dcal">
-    <br>
-    <label for="car">Carbs: </label>
-    <input type="number" id="dcar">
-    <br>
-    <label for="fat">Fat: </label>
-    <input type="number" id="dfat">
-    <br>
-    <label for="pro">Proteins: </label>
-    <input type="number" id="dpro">
-    <br>
-    <label for="sug">Sugars: </label>
-    <input type="number" id="dsug">
-    <br>
-    <br>   
-    <button id = "dlim">Daily Limit:</button>
+    <span id="clock"></span>
+    <img src='Images/louis-hansel-1506457-unsplash.jpg' style = 'position:fixed;top:0px;left:0px;width:100%;height:100%;z-index:-1;' >
+    
+    <form id = "foodentry" onsubmit="return false">
+      <div>
+        <label for="foodname">Foodname: </label>
+        <input type="text" id="foodname">
+      </div>
+      <div>
+        <label for="cal">Calories: </label>
+        <input type="number" id="cal">
+      </div>
+      <div>
+        <label for="car">Carbs: </label>
+        <input type="number" id="car">
+      </div>
+      <div>
+        <label for="fat">Fat: </label>
+        <input type="number" id="fat">
+      </div>
+      <div>
+        <label for="pro">Proteins: </label>
+        <input type="number" id="pro">
+        </div>
+      <div>
+        <label for="sug">Sugars: </label>
+        <input type="number" id="sug">
+        </div>
+      <div>  
+        <button id = "add">Add food item</button>
+      </div>
+    </form>
+    <div id = "Dailylimit">
+        <div>
+          <label for="cal">Calories: </label>
+          <input type="number" id="dcal">
+        </div>
+        <div>
+          <label for="car">Carbs: </label>
+          <input type="number" id="dcar">
+        </div>
+        <div>
+          <label for="fat">Fat: </label>
+          <input type="number" id="dfat">
+      </div>
+      <div>
+        <label for="pro">Proteins: </label>
+        <input type="number" id="dpro">
+      </div>
+      <div>
+        <label for="sug">Sugars: </label>
+        <input type="number" id="dsug">
+      </div>
+      <div>   
+        <button id = "dlim">Daily Limit:</button>
+      </div>
+   </div> 
+   <div id="about" class = "hidden">
+        <div>
+          <label for="foodname">Food name: </label>
+          <input type="text" id = "efood"> 
+        </div>
+        <div>
+          <label for="cal">Calories: </label>
+          <input type="number" id="ecal">
+        </div>
+        <div>
+          <label for="car">Carbs: </label>
+          <input type="number" id="ecar">
+         </div>
+         <div>
+           <label for="fat">Fat: </label>
+           <input type="number" id="efat">
+         </div>
+         <div>
+          <label for="pro">Proteins: </label>
+          <input type="number" id="epro">
+         </div>
+         <div>
+          <label for="sug">Sugars: </label>
+          <input type="number" id="esug">
+         </div>
+         <div>   
+          <p>Reclick edit to save changes</p>
+         </div>
+    </div>
     <table>
       <tr>
         <th>Food item</th>
