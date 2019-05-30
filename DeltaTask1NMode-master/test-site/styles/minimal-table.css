@@ -1,0 +1,151 @@
+html {
+  font-family: sans-serif;
+}
+
+table {
+  border-collapse: collapse;
+  border: 2px solid rgb(200,200,200);
+  letter-spacing: 1px;
+  font-size: 0.8rem;
+  margin: 100px auto;
+  width: 1200px
+}
+
+td, th {
+  border: 1px solid rgb(190,190,190);
+  padding: 10px 20px;
+  text-align: center;
+}
+
+td {
+  background-color: #6EB420;
+  text-decoration-color: black;
+}
+th {
+  background-color: green;
+  text-decoration-color: wheat;
+}
+
+.hidden{
+  display:none;
+}
+
+.unhidden{
+  display:block;
+}
+
+#clock{
+  position: fixed;
+  top: 0;
+  left: 1400px;
+}
+
+.total , .limit, .rem{
+  border: black;
+}
+caption {
+  padding: 10px;
+}
+p {
+  text-align: center;
+  top: 2000px;
+}
+
+#entry{
+    /* Just to center the form on the page */
+    margin: 300px 750px;
+    width: 400px;
+    /* To see the outline of the form */
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    background-color:  #6EB420;
+  }
+
+#foodentry{
+    /* Just to center the form on the page */
+    margin: 0 250px;
+    width: 400px;
+    /* To see the outline of the form */
+    padding: 1em;
+    border: 1px solid #CCC;
+    border-radius: 1em;
+    background-color: #6EB420;
+  }
+
+#Dailylimit {
+  position: fixed;
+  top: 0;
+  left: 700px;
+  width: 400px;
+  /* To see the outline of the form */
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+  background-color:rgb(220, 235, 17);
+
+}
+
+#about {
+  position: absolute;
+  top: 500px;
+  left: 700px;
+  width: 400px;
+  /* To see the outline of the form */
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+  background-color: rgb(253, 155, 28);
+}
+
+div {
+  margin-top: 1em;
+}
+
+#status {
+  background-color:rgb(253, 155, 28);
+  position: absolute;
+  top: 100px;
+  left: 1200px;
+  width: 400px;
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+}
+#safe, #critical, #danger {
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+}
+label {
+  /* To make sure that all labels have the same size and are properly aligned */
+  display:inline-block;
+  width: 90px;
+  text-align: center;
+}
+
+input {
+  /* To make sure that all text fields have the same font settings
+      By default, textareas have a monospace font */
+  font: 1em;
+  font-family: 'Courier New', Courier, monospace;
+
+  /* To give the same size to all text fields */
+  width: 300px;
+  box-sizing: border-box;
+
+  /* To harmonize the look & feel of text field border */
+  border: 1px solid black;
+}
+
+input:focus {
+  /* To give a little highlight on active elements */
+  background-color: white;
+  border-color: blue;
+}
+
+button {
+  /* This extra margin represent roughly the same space as the space
+      between the labels and their text fields */
+  margin-left: 1.5em;
+}
